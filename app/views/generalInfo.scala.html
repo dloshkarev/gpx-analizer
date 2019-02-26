@@ -1,0 +1,18 @@
+@import org.webjars.play.WebJarsUtil
+
+@(requestGuid: String)(implicit request: RequestHeader, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
+
+<!-- TODO: сделать табы с разными видами анализа -->
+<!--
+    Должны быть:
+    1. Таб с общей информацией: расстрояние за период, средний темп, средний пульс и т.д
+    2. Таб с графиком индекса бега
+    3. Таб с прогрессом - активности объединяются по неделям, месяцам, годам (выбирает пользователь) и считается средний индекс. График должен получиться более плавным и читаемым на полной выгрузке. Смысл - увидеть насколько я вырос за годы
+-->
+@main("General info") {
+    @navbar(requestGuid, "generalInfo")
+
+    <div class="container">
+        General info
+    </div>
+}

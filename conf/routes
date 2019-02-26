@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                                                 controllers.ApplicationController.index
+POST        /upload                                           controllers.ApplicationController.uploadActivitiesZip
+
+# Activities
+GET         /activities/:requestGuid                          controllers.ApplicationController.generalInfo(requestGuid: String)
+GET         /activities/byYear/:requestGuid                   controllers.ApplicationController.byYear(requestGuid: String)
+GET         /activities/performanceGrowth/:requestGuid        controllers.ApplicationController.performanceGrowth(requestGuid: String)
+
+# Rest
+GET         /rest/request/:requestGuid                        controllers.ApplicationController.fetchRequestActivities(requestGuid: String, yearStart: Option[Int], yearFinish: Option[Int])
+GET         /rest/request/:requestGuid/statistic              controllers.ApplicationController.fetchRequestActivitiesStatistic(requestGuid: String)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                                     controllers.Assets.versioned(file)
+->          /webjars                                          webjars.Routes

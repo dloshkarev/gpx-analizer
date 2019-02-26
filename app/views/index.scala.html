@@ -1,0 +1,12 @@
+@import org.webjars.play.WebJarsUtil
+
+@()(implicit request: RequestHeader, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
+
+@main("Upload GPX activities") {
+    @helper.form(action = routes.ApplicationController.uploadActivitiesZip, 'enctype -> "multipart/form-data") {
+        @helper.CSRF.formField
+        <input name="activitiesZip" type="file">
+        <input name="email" type="email" value="@{{"dloshkarev2010@gmail.com"}}">
+        <input type="submit" id="upload" value="upload file"/>
+    }
+}

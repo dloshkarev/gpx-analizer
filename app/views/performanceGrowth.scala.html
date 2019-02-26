@@ -1,0 +1,13 @@
+@import org.webjars.play.WebJarsUtil
+@import models.BuildInfo.BUILD_VERSION
+
+@(requestGuid: String)(implicit request: RequestHeader, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
+
+@main("Performance growth analyzing") {
+    @navbar(requestGuid, "performanceGrowth")
+
+    <div>
+        <canvas id="performanceChart"></canvas>
+    </div>
+}
+<script src="@assets.path("js/performanceGrowth.js")?v=@BUILD_VERSION"></script>

@@ -1,0 +1,27 @@
+@import controllers.AssetsFinder
+@import models.BuildInfo.BUILD_VERSION
+@import org.webjars.play.WebJarsUtil
+@import play.twirl.api.Html
+
+@(title: String)(content: Html)(implicit assets: AssetsFinder, webJarsUtil: WebJarsUtil)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="shortcut icon" type="image/png" href="@assets.path("img/favicon.png")">
+        @Html(webJarsUtil.css("bootstrap.min.css"))
+        <link rel="stylesheet" href="@assets.path("css/main.css")?v=@BUILD_VERSION">
+    </head>
+    <body>
+        @content
+    </body>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+    @Html(webJarsUtil.script("jquery", "jquery.min.js"))
+    <script src="@assets.path("js/popper.min.js")"></script>
+    @Html(webJarsUtil.script("bootstrap.min.js"))
+    @Html(webJarsUtil.script("Chart.min.js"))
+    <script src="@assets.path("js/main.js")?v=@BUILD_VERSION"></script>
+</html>

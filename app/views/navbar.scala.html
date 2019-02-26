@@ -1,0 +1,28 @@
+@import org.webjars.play.WebJarsUtil
+
+@(requestGuid: String, tab: String)(implicit request: RequestHeader, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
+
+<ul class="nav nav-tabs mt-2">
+    <li class="nav-item">
+        @if(tab == "generalInfo") {
+            <a class="nav-link active" href="@controllers.routes.ApplicationController.generalInfo(requestGuid)">General Info</a>
+        } else {
+            <a class="nav-link" href="@controllers.routes.ApplicationController.generalInfo(requestGuid)">General Info</a>
+        }
+    </li>
+    <li class="nav-item">
+        @if(tab == "byYear") {
+            <a class="nav-link active" href="@controllers.routes.ApplicationController.byYear(requestGuid)">Analyzing by years</a>
+        } else {
+            <a class="nav-link" href="@controllers.routes.ApplicationController.byYear(requestGuid)">Analyzing by years</a>
+        }
+    </li>
+    <li class="nav-item">
+        @if(tab == "performanceGrowth") {
+            <a class="nav-link active" href="@controllers.routes.ApplicationController.performanceGrowth(requestGuid)">Performance growth analyzing</a>
+        } else {
+            <a class="nav-link" href="@controllers.routes.ApplicationController.performanceGrowth(requestGuid)">Performance growth analyzing</a>
+        }
+    </li>
+</ul>
+<input id="requestGuidInput" type="hidden" value="@requestGuid">

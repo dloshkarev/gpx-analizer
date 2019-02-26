@@ -1,0 +1,29 @@
+@import org.webjars.play.WebJarsUtil
+
+@(requestGuid: String, years: Seq[Int])(implicit request: RequestHeader, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
+
+@main("Activities per year analyzing") {
+    @navbar(requestGuid, "byYear")
+
+    <h3 class="text-center mt-3">Select period to analyze</h3>
+    <div class="container text-center">
+        <div class="toggleView form-group row mt-4" role="group">
+            <label for="yearStart" class="col-1 mt-1">Start:</label>
+            <select class="form-control col-4" id="yearStart">
+                @for(year <- years) {
+                    <option>@year</option>
+                }
+            </select>
+            <label for="yearFinish" class="col-1 mt-1">Finish:</label>
+            <select class="form-control col-4" id="yearFinish">
+                @for(year <- years) {
+                    <option>@year</option>
+                }
+            </select>
+            <input type="button" class="btn btn-success ml-4" id="chartButton" value="Show"/>
+        </div>
+    </div>
+    <div>
+        <canvas id="activitiesChart"></canvas>
+    </div>
+}
